@@ -1,0 +1,10 @@
+alert('Hello!');
+let a = prompt('Press first number');
+let b = prompt('Press second number');
+let aToNumber = Number(a);
+let bToNumber = Number(b);
+let sum = aToNumber + bToNumber;
+let diff = aToNumber - bToNumber;
+let mult = aToNumber * bToNumber;
+let div = aToNumber / bToNumber;
+alert('Calculations are finished!' + `\nSum: ${a} + ${b} = ` + sum + `\nDiff: ${a} - ${b} = ` + diff + `\nMult: ${a} * ${b} = ` + mult + `\nDiv: ${a} / ${b} = ` + div);

@@ -14,12 +14,8 @@ function averageFunc (source) {
     return source;
 };
 function studentOut(source) {
-    let arrStudentOut = [];
-    source.forEach((elem) => {
-        if (elem.averageMarks < 60) {
-            arrStudentOut.push(elem);
-        };
-    });
+    averageFunc(source);
+    let arrStudentOut = source.filter(elem => elem.averageMarks < 60);
     return arrStudentOut;
 }
 function medianValue(source) {
@@ -51,6 +47,7 @@ function newStudent(source, nam, spec, mark) {
     return source
 }
 function topStudent(source) {
+    averageFunc(source);
     let newArr = source.map(element => {
         delete element.specialty;
         delete element.marks;
@@ -72,8 +69,5 @@ function topFive (source) {
     newArray = source.slice(0, 5);
     return newArray;
 }
-averageFunc(test);
-studentOut(test);
-medianValue(test);
-newStudent(test);
-topStudent(test);
+
+console.log(studentOut(test));

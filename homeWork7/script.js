@@ -41,14 +41,11 @@ function medianValue(source) {
     });
     return source
 }
-function newStudent(source) {
+function newStudent(source, nam, spec, mark) {
     let student = {
-    name: 'Roman Zelenskiy',
-    specialty: 'Product Directives Executive',
-    marks: [
-        34, 87, 85, 54, 69, 52, 80, 50, 64, 86, 77, 69, 87, 83, 37, 61, 36, 77, 89, 94, 94, 64,
-        36, 56, 55
-        ]
+    name: nam,
+    specialty: spec,
+    marks: mark
     }
     source.push(student);
     return source
@@ -72,7 +69,7 @@ function topStudent(source) {
 };
 function topFive (source) {
     source = topStudent(test);
-    newArray = source.splice(0, 5);
+    newArray = source.slice(0, 5);
     return newArray;
 }
 averageFunc(test);
@@ -80,4 +77,3 @@ studentOut(test);
 medianValue(test);
 newStudent(test);
 topStudent(test);
-topFive(test);

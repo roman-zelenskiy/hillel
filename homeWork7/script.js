@@ -1,17 +1,14 @@
-function getAverage (source) {
-    let sumArr = 0;
-    let averageValue;
-    for (let i = 0; i < source.length; i++) {
-        sumArr = sumArr + source[i];    
-    }
-    averageValue = sumArr / source.length;
-    return averageValue;
-}
-function averageFunc (source) {
-    source.forEach(element => {
-        element.averageMarks = getAverage(element.marks);
-    });
-    return source;
+function averageFunc(source) {
+    let getAverageMarks = source.map((el) => {
+        return el.averageMarks = el.marks.reduce((accum, elem, i, array) => {
+            accum = (accum + elem);
+            if (i === array.length - 1) {
+                return accum / array.length;
+            } else {
+                return accum;
+            }
+        });
+    })
 };
 function studentOut(source) {
     averageFunc(source);
@@ -19,9 +16,8 @@ function studentOut(source) {
     return arrStudentOut;
 }
 function medianValue(source) {
-    let value;
-    source.forEach(element => {
-        element.marks.sort((a, b) => {
+    source.map((element) => {
+        element.medianMarks = element.marks.sort((a, b) => {
             if( a === Infinity ) 
             return 1; 
             else if( isNaN(a)) 
@@ -29,13 +25,13 @@ function medianValue(source) {
             else 
             return a - b;
         });
-        if (element.marks.length % 2 === 0) {
+         if (element.marks.length % 2 === 0) {
             element.medianMarks = element.marks[element.marks.length / 2]
         } else {
             element.medianMarks = ((element.marks[Math.floor(element.marks.length / 2)]) + (element.marks[Math.ceil(element.marks.length / 2)])) / 2;
         }
-    });
-    return source
+    })
+    return source;
 }
 function newStudent(source, nam, spec, mark) {
     let student = {
@@ -68,6 +64,4 @@ function topFive (source) {
     source = topStudent(test);
     newArray = source.slice(0, 5);
     return newArray;
-}
-
-console.log(studentOut(test));
+};

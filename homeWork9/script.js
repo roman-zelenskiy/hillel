@@ -1,44 +1,39 @@
+// 1.
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-function enterBetween(min, max) {
-    if (min == undefined || max == undefined) {
-        do {
-            min = prompt('enter min');
-            max = prompt('enter max');
-        } while ((isNaN(+min) || isNaN(+max)) || (min == '' || max == '') || (min > max));
-    }    
+let min = () => {
+    let a;
+    do {
+        a = min = prompt('enter min').trim();
+    } while (isNaN(+a) || (a == ''));
+    return a;
+}
+let max = () => {
+    let b;
+    do {
+        b = prompt('enter max').trim();
+    } while (isNaN(+b) || (b == ''));;
+    return b;
+}
+
+function isBetween(min, max) {
+    if (typeof min !== 'number' || typeof max !== "number") {
+        alert('input not number');
+    } else if (min > max) {
+        alert('min greater than max')
+    } else {
         return (num) => {
             if (num >= (+min) && num <= (+max)) {
                 return num;
             };
-        }
- 
+        };
+    }
 };
 
 
 
 
-function calculate(inputOperation) {
-    if (inputOperation == undefined) {
-        do {
-            inputOperation = prompt(`Hello!\nEnter operation\n+          -\n*          /\n pow`);
-            if (inputOperation == '+') {
-                break;
-            }
-            if (inputOperation == '-') {
-                break;
-            }
-            if (inputOperation == '*') {
-                break;
-            }
-            if (inputOperation == '/') {
-                break;
-            }
-            if (inputOperation == 'pow') {
-                break;
-            }
-        } while (true);
-    }
-    function sum(a, b) {
+// 2.
+ function sum(a, b) {
         let resultSum = `Operation ${a} + ${b} finished with result ${a + b}\n`;
         return resultSum;
     }
@@ -57,56 +52,67 @@ function calculate(inputOperation) {
     function pow(a, b) {
         let resultPow = `Operation ${a}^${b} finished with result ${Math.pow(a, b)}\n`;
         return resultPow;
-    }
+}
+let inputOperation = () => {
+    let valueOperation;
+        do {
+            valueOperation = prompt(`Hello!\nEnter operation\n+          -\n*          /\n pow`);
+            if (valueOperation == '+') {
+                break
+            }
+            if (valueOperation == '-') {
+                break;
+            }
+            if (valueOperation == '*') {
+                break;
+            }
+            if (valueOperation == '/') {
+                break;
+            }
+            if (valueOperation == 'pow') {
+                break;
+            }
+    } while (true);
+    return valueOperation;
+}
+let numberA = () => {
+    let a;
+    do {
+        a = prompt('enter number a').trim();
+    } while (isNaN((+a)) || a == '');
+    return a = +a;
+}
+let numberB = () => {
+    let b;
+    do {
+        b = prompt('enter number b').trim();
+    } while (isNaN((+b)) || b == '');
+    return b = +b;
+}
+function calculate(operation) {
     return function (a) {
-        if (a == undefined) {
-            do {
-                a = prompt('enter a').trim();
-            } while (isNaN((+a)) || a == '');
-            a = +a;
-        }
         return function (b) {
-            if (b == undefined) {
-                do {
-                    b = prompt('enter b').trim();
-                } while (isNaN(+b) || b == '');
-                b = +b;
-                if (inputOperation == '+') {
-                    alert(sum(a, b));
-                } else if (inputOperation == '-') {
-                    alert(diff(a, b));
-                } else if (inputOperation == '*') {
-                    alert(mult(a, b));
-                } else if (inputOperation == '/') {
-                    alert(div(a, b));
-                } else if (inputOperation == 'pow') {
-                    alert(pow(a, b));
-                }
-            } else {
-                if (inputOperation == '+') {
-                    alert(sum(a, b));
-                } else if (inputOperation == '-') {
-                    alert(diff(a, b));
-                } else if (inputOperation == '*') {
-                    alert(mult(a, b));
-                } else if (inputOperation == '/') {
-                    alert(div(a, b));
-                } else if (inputOperation == 'pow') {
-                    alert(pow(a, b));
-                }
-            } 
-        } 
+            if (operation == '+') {
+                alert(sum(a, b));
+            } else if (operation == '-') {
+                alert(diff(a, b));
+            } else if (operation == '*') {
+                alert(mult(a, b));
+            } else if (operation == '/') {
+                alert(div(a, b));
+            } else if (operation == 'pow') {
+                alert(pow(a, b));
+            }
+        }
     }
 }
-let numA = 3;
-let numB = 7;
-console.log(calculate()()())
+console.log(calculate(inputOperation())(numberA())(numberB()))
 
 
 
 
 
-
+// 3.
 const products = [
   {name: 'Product 1', quantity: 10, price: 25},
   {name: 'Product 2', quantity: 3, price: 55},

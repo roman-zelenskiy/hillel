@@ -23,10 +23,14 @@
 
 .todo_list_head {
     font-size: 28px;
+    width: 200px;
+    overflow-wrap: break-word;
 }
 
 .todo_list_desc {
     font-size: 20px;
+    width: 200px;
+    overflow-wrap: break-word;
 }
 
 h1 {

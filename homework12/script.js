@@ -9,6 +9,7 @@ let passwordLogin = document.getElementsByClassName('password')[0];
 let formLogin = document.getElementsByClassName('form_login')[0];
 
 
+
 butLogin.disabled = true;
 let messageValidation = document.createElement('p');
 formLogin.append(messageValidation);
@@ -52,14 +53,7 @@ function onValidation() {
                             if (passwordLogin.value.length < 6) {
                                 messageValidation.innerText = 'пароль должен быть не менее 6 символов'
                             } else {
-                                 array.forEach((el, index, array) => {
-                                    if (el.login == emailLogin.value && el.password == passwordLogin.value) {
-                                        formLogin.addEventListener('submit', onSubmitValid);
-                                    }
-                                    if (messageValidation.innerText == '') {
-                                        formLogin.addEventListener('submit', onSubmitNotValid);
-                                    }
-                                });
+                                formLogin.addEventListener('submit', onSubmitValid);
                             }
                         };
                     };
@@ -70,10 +64,13 @@ function onValidation() {
 }
 function onSubmitValid(e) {
     e.preventDefault();
-    messageValidation.innerText = 'пользователь существует';
+    array.forEach((el, index, array) => {
+        if (el.login == emailLogin.value && el.password == passwordLogin.value) {
+            messageValidation.innerText = 'пользователь существует';
+        }
+        if (messageValidation.innerText == '') {
+            messageValidation.innerText = 'пользователь не существует';
+        }
+    });
 };
 
-function onSubmitNotValid(e) {
-    e.preventDefault();
-    messageValidation.innerText = 'пользователь не существует';
-};

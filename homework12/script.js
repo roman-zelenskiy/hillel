@@ -28,40 +28,49 @@ emailLogin.addEventListener('focus', () => {
 passwordLogin.addEventListener('focus', () => {
     messageValidation.innerText = '';
 }) 
-emailLogin.addEventListener('blur',onValidation);
-passwordLogin.addEventListener('blur', onValidation);
-
-function onValidation() {
-        if (emailLogin.value == '' || passwordLogin.value == '') {
-        messageValidation.innerText = 'отсутствует email или пароль';
+emailLogin.addEventListener('blur', onValidationEmail);
+passwordLogin.addEventListener('blur', onValidationPassword);
+function onValidationEmail() {
+    if (!emailLogin.value) {
+        messageValidation.innerText = 'отсутствует email';
+        return false;
+    }
+    if (emailLogin.value.includes('@') == false) {
+        messageValidation.innerText = 'отсутствует @';
+        return false;
+    }
+    if (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).includes('.') == false) {
+        messageValidation.innerText = 'имя домена без точки';
+        return false;
+    }
+    if (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).indexOf('.') == 0 || emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).indexOf('.') == (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).length) - 1) {
+        messageValidation.innerText = 'точка не должна быть в конце или в начале домена';
+        return false;
+    }
+    if (emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).length == 0) {
+        messageValidation.innerText = 'отсутствует имя email';
+        return false;
+    }
+    if (emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.') == 0 || emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.') == ((emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.').length) - 1)) {
+        messageValidation.innerText = 'точка не должна быть в конце или в начале';
+        return false;
     } else {
-        if (emailLogin.value.includes('@') == false) {
-            messageValidation.innerText = 'отсутствует @';
-        } else {
-            if (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).includes('.') == false) {
-                messageValidation.innerText = 'имя домена без точки';
-            } else {
-                if (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).indexOf('.') == 0 || emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).indexOf('.') == (emailLogin.value.slice((emailLogin.value.indexOf('@')) + 1, emailLogin.value.length).length) - 1) {
-                    messageValidation.innerText = 'точка не должна быть в конце или в начале домена';
-                } else {
-                    if (emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).length == 0) {
-                        messageValidation.innerText = 'отсутствует имя email';
-                    } else {
-                        if (emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.') == 0 || emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.') == ((emailLogin.value.slice(0, (emailLogin.value.indexOf('@'))).indexOf('.').length) - 1)) {
-                            messageValidation.innerText = 'точка не должна быть в конце или в начале';
-                        } else {
-                            if (passwordLogin.value.length < 6) {
-                                messageValidation.innerText = 'пароль должен быть не менее 6 символов'
-                            } else {
-                                formLogin.addEventListener('submit', onSubmitValid);
-                            }
-                        };
-                    };
-                };
-            };
-        };
-    };
+        formLogin.addEventListener('submit', onSubmitValid);
+    }
 }
+function onValidationPassword() {
+    if (!passwordLogin.value) {
+        messageValidation.innerText = 'отсутствует пароль';
+        return false;
+    }
+    if (passwordLogin.value.length < 6) {
+        messageValidation.innerText = 'пароль должен быть не менее 6 символов'
+        return false;
+    } else {
+        formLogin.addEventListener('submit', onSubmitValid);
+    };
+};
+
 function onSubmitValid(e) {
     e.preventDefault();
     array.forEach((el, index, array) => {

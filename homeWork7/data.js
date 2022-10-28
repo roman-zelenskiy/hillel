@@ -194,9 +194,6 @@ const test = [
     {
         name: 'Javier Huel',
         specialty: 'Product Directives Executive',
-        marks: [
-            34, 87, 85, 54, 69, 52, 80, 50, 64, 86, 77, 69, 87, 83, 37, 61, 36, 77, 89, 94, 94, 64,
-            36, 56, 55
-        ]
+        marks: [33, 33, 55, 22, 88]
     }
 ];

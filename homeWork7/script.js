@@ -65,3 +65,9 @@ function topFive (source) {
     newArray = source.slice(0, 5);
     return newArray;
 };
+
+
+
+
+medianValue(test);
+console.log(test);

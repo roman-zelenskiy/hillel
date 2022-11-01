@@ -1,122 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./script.js" defer></script>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <style>
-    button{
-        cursor: pointer;
-    }
-    select{
-        cursor: pointer;
-    }
-    .slider{
-        margin: auto;
-        width: 700px;
-        height: 700px;
-        position: relative;
-        overflow: hidden;
-    }
-    .item_box{
-        display: flex;
-        position: absolute;
-    }
-    .item_box div{
-        min-width: 700px;
-        min-height: 700px;
-        text-align: center;
-        font-size: 60px;
-    }
-    .current_item{
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        left: 50%;
-    }
-    .current_item button:first-child{
-        margin-left: -50%;
-    }
-    .current_item button{
-        position: relative;
-        width: 30px;
-        height: 30px;
-        top: 50%;
-        left: 0;
-    }
-    .arr_left{
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: 50%;
-        left: 0;
-        margin-top: -25px;
-        font-size: 30px;
-    }
-    .arr_right{
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        margin-top: -25px;
-        font-size: 30px;
-    }
-    .first_slide{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
-    .last_slide{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-    .add_slide_number button:first-child{
-        margin-left: -50%;
-    }
-    .add_slide_number{
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        z-index: 1;
-    }
-    .add_slide{
-        position: absolute;
-        bottom: 0;
-        right: 10%;
-    }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <div class="slider">
-        <div class="current_item">
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-        </div>
-        <div class="add_slide_number">
-            <button>+</button>
-            <button>+</button>
-            <button>+</button>
-            <button>+</button>
-        </div>
-        <div class="item_box">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-            <div class="item">4</div>
-        </div>
-        <button class="add_slide">Add Last Slide</button>
-        <button class="first_slide">First</button>
-        <button class="last_slide">Last</button>
-        <button class="arr_left"><</button>
-        <button class="arr_right">></button>
+      <div class="current_item">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+      <div class="add_slide_number">
+        <button>+</button>
+        <button>+</button>
+        <button>+</button>
+        <button>+</button>
+      </div>
+      <div class="item_box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+      </div>
+      <button class="add_slide">Add Last Slide</button>
+      <button class="first_slide">First</button>
+      <button class="last_slide">Last</button>
+      <button class="arr_left"><</button>
+      <button class="arr_right">></button>
     </div>
-</body>
+  </body>
 </html>
-

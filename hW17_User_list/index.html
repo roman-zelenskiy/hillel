@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <style> 
+        body{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        body div {
+            width: 50%;
+        }
+        .users, .new_users{
+            width: 100%;
+            text-align: center;
+        }
+        .users p {
+            overflow-wrap: break-word;
+        }
+    </style>
+    <div>
+        <h1>Users</h1>
+        <div class="users"></div>
+        <button id="back">back</button>
+        <button id="next">next</button>
+    </div>
+    <div>
+        <h1>New users</h1>
+        <div class="new_users"></div>
+        <form accept="#">
+            <input id="first_name" type="text" placeholder="first_name">
+            <input id="last_name" type="text" placeholder="last_name">
+            <input type="email" id="email" placeholder="email">
+            <input type="text" id="job" placeholder="job">
+            <button id="send">send</button>
+        </form>
+    </div>
+</body>
+</html>

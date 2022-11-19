@@ -9,48 +9,67 @@ let responseUsers = JSON.parse(xhr.response);
 
 let users = document.getElementsByClassName('users')[0];
 let user;
+let spanValue;
 responseUsers.data.forEach(element => {
     user = document.createElement('p');
-    user.innerText = `${JSON.stringify(element).slice(2, JSON.stringify(element).length - 1)}`
+    user.style.display = 'flex';
+    Object.values(element).forEach((el, index, arr) => {
+        spanValue = document.createElement('p');
+        if (index === arr.length - 1) {
+            spanValue = document.createElement('img');
+            spanValue.src = `${el}`;
+            user.append(spanValue);
+            return false;
+        }
+        spanValue.innerText = el;
+        user.append(spanValue);
+    })
+    user.style.border = '2px solid black';
     users.append(user);
 });
-
-function onNextPage() {
+function onNextPage(e) {
     if (page >= 2) {
         return false;
     };
     xhr.open('GET', `https://reqres.in/api/users?page=${++page}`, false);
     xhr.send();
     responseUsers = JSON.parse(xhr.response);
-    let i = 0
-    for (el of users.children) {
-        responseUsers.data.forEach((element, index) => {
-            if (i === index) {
-                el.innerText = `${JSON.stringify(element).slice(2, JSON.stringify(element).length - 1)}`;
-            };
-        });
-        i++;
-    };
-    console.log(page);
-}
+    for (let k = 0; k < users.children.length; k++){
+        for (let j = 0; j < users.children[k].children.length; j++) {
+            responseUsers.data.forEach((el, index) => {
+                Object.values(el).forEach((elem, ind, arr) => {
+                    if (k === index && j === ind) {
+                        if (j === users.children[k].children.length - 1) {
+                            users.children[k].children[j].src = elem;
+                        }
+                        users.children[k].children[j].innerText = elem;
+                    }   
+                })
+            });
+        };
+   }
+};
 function onBackPage() {
-    if (page <= 1) {
+   if (page <= 1) {
         return false;
     };
     xhr.open('GET', `https://reqres.in/api/users?page=${--page}`, false);
     xhr.send();
     responseUsers = JSON.parse(xhr.response);
-    let i = 0
-    for (el of users.children) {
-        responseUsers.data.forEach((element, index) => {
-            if (i === index) {
-                el.innerText = `${JSON.stringify(element).slice(2, JSON.stringify(element).length - 1)}`;
-            };
-        });
-        i++;
-    };
-    
-    console.log(page);
+    for (let k = 0; k < users.children.length; k++){
+        for (let j = 0; j < users.children[k].children.length; j++) {
+            responseUsers.data.forEach((el, index) => {
+                Object.values(el).forEach((elem, ind, arr) => {
+                    if (k === index && j === ind) {
+                        if (j === users.children[k].children.length - 1) {
+                            users.children[k].children[j].src = elem;
+                        }
+                        users.children[k].children[j].innerText = elem;
+                    }   
+                })
+            });
+        };
+    }
 };
 back.addEventListener('click', onBackPage);
 next.addEventListener('click', onNextPage);
@@ -63,20 +82,29 @@ let lastName = document.getElementById('last_name');
 let email = document.getElementById('email');
 let job = document.getElementById('job');
 let newUsers = document.getElementsByClassName('new_users')[0];
+let responseNewUsers;
 function onSendForm(e) {
     e.preventDefault();
     let sendForm = new XMLHttpRequest();
     sendForm.open('POST', 'https://reqres.in/api/users', false);
     sendForm.setRequestHeader('content-type', 'application/json');
     sendForm.send(JSON.stringify({
-        "Name": `${firstName.value}`,
-        "Last Name": `${lastName.value}`,
-        "Email": `${email.value}`,
-        "Job": `${job.value}`
+        "Name": firstName.value,
+        "Last Name": lastName.value,
+        "Email": email.value,
+        "Job": job.value
     }));
     let user;
+    let spanValue;
+    responseNewUsers = JSON.parse(sendForm.response);
     user = document.createElement('p');
-    user.innerText = `${sendForm.response.slice(2, sendForm.response.length - 1)}`
+    Object.values(responseNewUsers).forEach((el, index, arr) => {
+        spanValue = document.createElement('p');
+        spanValue.innerText = el;
+        user.append(spanValue);
+    })
+    user.style.display = 'flex';
+    user.style.border = '2px solid black';
     newUsers.append(user);
 }
 sendBtn.addEventListener('click', onSendForm);

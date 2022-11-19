@@ -89,10 +89,10 @@ function onSendForm(e) {
     sendForm.open('POST', 'https://reqres.in/api/users', false);
     sendForm.setRequestHeader('content-type', 'application/json');
     sendForm.send(JSON.stringify({
-        "Name": firstName.value,
-        "Last Name": lastName.value,
-        "Email": email.value,
-        "Job": job.value
+        name: firstName.value,
+        last_name: lastName.value,
+        email: email.value,
+        job: job.value
     }));
     let user;
     let spanValue;

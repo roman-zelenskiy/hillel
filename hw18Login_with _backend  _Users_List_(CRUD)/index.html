@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <style>
+        #form{
+            text-align: center;
+        }
+        #form.d-none{
+            display: none;
+        }
+        .users{
+            display: flex;
+            width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .users p{
+            width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+    <form action="#" id="form">
+        <input type="email" name="email" id="email">
+        <input type="password" name="password" id="password">
+        <button id="login_btn">log in</button>
+    </form>
+</body>
+</html>

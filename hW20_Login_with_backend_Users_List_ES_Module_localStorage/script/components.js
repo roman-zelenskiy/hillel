@@ -1,5 +1,6 @@
 import { form, backBtn, nextBtn, deleteBtn, changeBtn, users, changeableVar} from './getVariable.js';
 import { onClickBack, onClickNext, onRemoveUser, onUpdateUser} from './utils.js';
+import { successfulLogin } from './loginCallback.js';
 function hideFormLogin() {
     form.hidden = true;
 }
@@ -45,9 +46,19 @@ function searchEl(event) {
         }
     }
 }
+function addTokkenToLocalStorage(token) {
+    localStorage.setItem('token', token);
+}
+function testForLogin() {
+    if (localStorage.getItem('token')) {
+        successfulLogin();
+    } 
+}
 export {
     hideFormLogin,
     addBtnBackAndNext,
     addEventClickToBtn,
-    searchEl
+    searchEl,
+    addTokkenToLocalStorage,
+    testForLogin
 } 

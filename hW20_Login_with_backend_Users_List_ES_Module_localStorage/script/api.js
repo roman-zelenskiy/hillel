@@ -1,5 +1,6 @@
 import { URL } from './getVariable.js';
-import {successfulLogin, unSuccessfulLogin} from './loginCallback.js'
+import { successfulLogin, unSuccessfulLogin } from './loginCallback.js'
+import { addTokkenToLocalStorage } from './components.js'; 
 function getRequestLogin(e) {
     e.preventDefault();
     fetch(`${URL}/login`, {
@@ -14,6 +15,10 @@ function getRequestLogin(e) {
     })
         .then((response) => {
             return response.json();
+        })
+        .then((response) => {
+            addTokkenToLocalStorage(response.token);
+            return response;
         })
         .then((response) => {
             if (!response.token) {

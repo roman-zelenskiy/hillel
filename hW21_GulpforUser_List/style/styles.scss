@@ -1,0 +1,31 @@
+@import './reset.scss'; 
+body {
+    text-align: center;
+}
+
+#form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.users {
+    margin: 0 auto;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .user {
+        border: 2px solid gray;
+        text-align: center;
+        margin: 5px;
+    }
+}
+
+
+.d_block {
+    display: block;
+}
+
+.d_none {
+    display: none;
+}
